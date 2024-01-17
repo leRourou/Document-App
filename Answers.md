@@ -116,3 +116,8 @@ TODO!!!!!!
         return documentListBundle
     }
 ```
+## Partie 6 - Créer l’écran de détail
+### Exercice 1
+Un `Segue` permet de définir une transition entre deux `ViewController`.
+### Exercice 2
+Une `constraint` est une distance permettant de définir le placement d'un élément de l'UI. Quand à l'`AutoLayout `, il permet de créer des contraintes qui définissent des relations entre deux vues; on précise à l'`AutoLayout` des informations pour qu'il puisse modifier la position et la taille de nos vues en fonction de la taille de l'écran: ces informations sont les contraintes.
