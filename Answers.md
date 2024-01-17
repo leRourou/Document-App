@@ -65,6 +65,7 @@ L'intérêt d'utiliser une propriété statique, est que l'on a pas besoin de cr
 Si `dequeueReusableCell` est aussi important pour les performances de l'application, c'est parce qu'au lieu de créer chaque cellule et de les afficher de manière sélective, il ne créé qu'une poignée de cellules, suffisamment pour remplir l'écran et un peu plus. Au fur et à mesure du défilement, nous réutilisons les cellules en dehors de l'écran, ce qui permet d'économiser de la mémoire.
 ### Exercice 3
 On va créer une extension de type `Int64` car c'est le type du paramètre `fromByteCount` accepté par la méthode `string` de la classe `ByteCountFormatter` que nous allons utiliser.
+Le type `Int64` contenant toutes les valeurs du type `Int`, cela ne pose pas de problème.
 ```swift
 extension Int64{
     func formattedSize() -> String{
@@ -72,9 +73,46 @@ extension Int64{
     }
 }
 ```
-Et appliquer la modification dans la méthode `tableView`
+On applique alors la modification dans la méthode `tableView`
 ```swift
 content.secondaryText = DocumentFile.documentList[indexPath.row].size.formattedSize()
 ```
 
 ## Partie 4 - Navigation
+### Exercice 1
+TODO!!!!!!
+## Partie 5 - Bundle
+### Exercice 1
+```swift
+ func listFileInBundle() -> [DocumentFile] {
+        // On instancie un objet de type FileManager permettant d'effectuer des actions sur le sytème de fichier
+        let fm = FileManager.default
+        // On obtient le path des "resources"
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
+        
+        // On Initialise la liste de documents
+        var documentListBundle = [DocumentFile]()
+    
+        // Pour chaque fichier trouvé dans "items"
+        for item in items {
+            // On prends les fichers qui n'ont pas le suffixe DS_Store et on le suffixe .jpg
+            if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") {
+                // On instancie un objet de type URL qui sera le path de notre fichier (son dossier parent / son nom)
+                let currentUrl = URL(fileURLWithPath: path + "/" + item)
+                // On récupère des informations importantes sur le fichier avec la méthode "resourceValues" de la classe URL
+                let resourcesValues = try! currentUrl.resourceValues(forKeys: [.contentTypeKey, .nameKey, .fileSizeKey])
+                   
+                // On ajoute à la liste initialement créé un objet de type DocumentFile avec comme propriétés les informations récupérés précedemment.
+                documentListBundle.append(DocumentFile(
+                    title: resourcesValues.name!,
+                    size: resourcesValues.fileSize ?? 0,
+                    imageName: item,
+                    url: currentUrl,
+                    type: resourcesValues.contentType!.description)
+                )
+            }
+        }
+        return documentListBundle
+    }
+```
