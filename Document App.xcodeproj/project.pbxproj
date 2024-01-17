@@ -14,6 +14,11 @@
 		05C1C0312B56CFF1005118F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05C1C0302B56CFF1005118F7 /* Assets.xcassets */; };
 		05C1C0342B56CFF1005118F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */; };
 		F5404DB62B57B930000257C3 /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */; };
+		F5404DBC2B57CA88000257C3 /* eduardo-ramos-OTkjNdWvAdo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DB72B57CA88000257C3 /* eduardo-ramos-OTkjNdWvAdo-unsplash.jpg */; };
+		F5404DBD2B57CA88000257C3 /* pawel-czerwinski-bWRRZgOFlII-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DB82B57CA88000257C3 /* pawel-czerwinski-bWRRZgOFlII-unsplash.jpg */; };
+		F5404DBE2B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DB92B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg */; };
+		F5404DBF2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DBA2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg */; };
+		F5404DC02B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DBB2B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		05C1C0332B56CFF1005118F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05C1C0352B56CFF1005118F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewController.swift; sourceTree = "<group>"; };
+		F5404DB72B57CA88000257C3 /* eduardo-ramos-OTkjNdWvAdo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "eduardo-ramos-OTkjNdWvAdo-unsplash.jpg"; sourceTree = "<group>"; };
+		F5404DB82B57CA88000257C3 /* pawel-czerwinski-bWRRZgOFlII-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pawel-czerwinski-bWRRZgOFlII-unsplash.jpg"; sourceTree = "<group>"; };
+		F5404DB92B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neom-wEgMlQ8DL6s-unsplash.jpg"; sourceTree = "<group>"; };
+		F5404DBA2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg"; sourceTree = "<group>"; };
+		F5404DBB2B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "daniela-matthies-Xb4Y78131fA-unsplash.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,11 @@
 				05C1C0302B56CFF1005118F7 /* Assets.xcassets */,
 				05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */,
 				05C1C0352B56CFF1005118F7 /* Info.plist */,
+				F5404DBB2B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg */,
+				F5404DB72B57CA88000257C3 /* eduardo-ramos-OTkjNdWvAdo-unsplash.jpg */,
+				F5404DB92B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg */,
+				F5404DB82B57CA88000257C3 /* pawel-czerwinski-bWRRZgOFlII-unsplash.jpg */,
+				F5404DBA2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg */,
 			);
 			path = "Document App";
 			sourceTree = "<group>";
@@ -128,9 +143,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5404DBF2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg in Resources */,
 				05C1C0342B56CFF1005118F7 /* LaunchScreen.storyboard in Resources */,
+				F5404DBD2B57CA88000257C3 /* pawel-czerwinski-bWRRZgOFlII-unsplash.jpg in Resources */,
 				05C1C0312B56CFF1005118F7 /* Assets.xcassets in Resources */,
+				F5404DC02B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg in Resources */,
+				F5404DBE2B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg in Resources */,
 				05C1C02F2B56CFEF005118F7 /* Main.storyboard in Resources */,
+				F5404DBC2B57CA88000257C3 /* eduardo-ramos-OTkjNdWvAdo-unsplash.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

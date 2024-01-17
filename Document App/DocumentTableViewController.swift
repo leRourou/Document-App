@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension Int{
+    func formattedSize() -> String{
+        return ByteCountFormatter.string(fromByteCount: Int64(self), countStyle: ByteCountFormatter.CountStyle.decimal)
+    }
+}
+
 class DocumentTableViewController: UITableViewController {
 
     struct DocumentFile{
@@ -29,6 +35,38 @@ class DocumentTableViewController: UITableViewController {
             DocumentFile(title: "Document 10", size: 1000, imageName: nil, url: URL(string: "https://www.apple.com")!, type: "text/plain"),
         ]
     }
+
+    func listFileInBundle() -> [DocumentFile] {
+        // On instancie un objet de type FileManager permettant d'effectuer des actions sur le sytème de fichier
+        let fm = FileManager.default
+        // On obtient le path des "resources"
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
+        
+        // On Initialise la liste de documents
+        var documentListBundle = [DocumentFile]()
+    
+        // Pour chaque fichier trouvé dans "items"
+        for item in items {
+            // On prends les fichers qui n'ont pas le suffixe DS_Store et on le suffixe .jpg
+            if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") {
+                // On instancie un objet de type URL qui sera le path de notre fichier (son dossier parent / son nom)
+                let currentUrl = URL(fileURLWithPath: path + "/" + item)
+                // On récupère des informations importantes sur le fichier avec la méthode "resourceValues" de la classe URL
+                let resourcesValues = try! currentUrl.resourceValues(forKeys: [.contentTypeKey, .nameKey, .fileSizeKey])
+                   
+                // On ajoute à la liste initialement créé un objet de type DocumentFile avec comme propriétés les informations récupérés précedemment.
+                documentListBundle.append(DocumentFile(
+                    title: resourcesValues.name!,
+                    size: resourcesValues.fileSize ?? 0,
+                    imageName: item,
+                    url: currentUrl,
+                    type: resourcesValues.contentType!.description)
+                )
+            }
+        }
+        return documentListBundle
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +86,22 @@ class DocumentTableViewController: UITableViewController {
         return 1
     }
 
-    // Indique au Controller combien de cellules il doit afficher
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DocumentFile.documentList.count
+        return listFileInBundle().count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
 
-        // Configure the cell...
         var content = cell.defaultContentConfiguration()
-        content.text = DocumentFile.documentList[indexPath.row].title
-        content.secondaryText = String(DocumentFile.documentList[indexPath.row].size)
+        content.text = listFileInBundle()[indexPath.row].title
+        content.secondaryText = listFileInBundle()[indexPath.row].size.formattedSize()
         cell.contentConfiguration = content
         
         return cell
     }
+    
     
 
     /*
