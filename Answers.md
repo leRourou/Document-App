@@ -1,6 +1,8 @@
 # Answers
 > CHENU Adrien & ROUQUETTE Axel
-## Partie 1 - Environnement de développement
+
+## Partie 1 - Environnement de développement
+
 
 ### Exercice 1
 #### Les targets
@@ -36,9 +38,11 @@ Il s'agit du raccourci `CMD + /`
 ### Exercice 3
 /
 
+
 ## Partie 3 - Délégation
 ### Exercice 1
 L'intérêt d'utiliser une propriété statique, est que l'on a pas besoin de créer une instance de la classe pour accèder à la propriété.
+
 ### Exercice 2
 ```swift
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,9 +82,12 @@ On applique alors la modification dans la méthode `tableView`
 content.secondaryText = DocumentFile.documentList[indexPath.row].size.formattedSize()
 ```
 
+
 ## Partie 4 - Navigation
 ### Exercice 1
 TODO!!!!!!
+
+
 ## Partie 5 - Bundle
 ### Exercice 1
 ```swift
@@ -116,8 +123,17 @@ TODO!!!!!!
         return documentListBundle
     }
 ```
+
+
 ## Partie 6 - Créer l’écran de détail
 ### Exercice 1
 Un `Segue` permet de définir une transition entre deux `ViewController`.
+
 ### Exercice 2
 Une `constraint` est une distance permettant de définir le placement d'un élément de l'UI. Quand à l'`AutoLayout `, il permet de créer des contraintes qui définissent des relations entre deux vues; on précise à l'`AutoLayout` des informations pour qu'il puisse modifier la position et la taille de nos vues en fonction de la taille de l'écran: ces informations sont les contraintes.
+
+
+## Partie 9 - QLPrview
+### Exercice 1
+#### Questions
+Il serait pertinent d'utiliser un `disclosureIndicator` pour indiquer qu'une cellule est cliquable et qu'elle mènera à une autre vue de l'application. Cela offre une indication visuelle aux utilisateurs que la cellule est interactive. De plus, cela permet de suivre les conventions de conception d'Apple pour les applications iOS. Les utilisateurs d'iOS s'attendent à voir cette flèche pour indiquer la navigation ou l'accès à plus d'informations.
