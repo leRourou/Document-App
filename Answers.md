@@ -156,3 +156,5 @@ let button2 = UIBarButtonItem(title: "Autre", style: .plain, target: self, actio
 // Ajouter les boutons à la barre de navigation
 navigationItem.rightBarButtonItems = [button1, button2]
 ```
+
+La fonction `defer` sert à définir un bloc de code qui sera exécuté juste avant la sortie d'une portée courante (comme une fonction, une boucle, une condition, etc.). 
