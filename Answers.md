@@ -36,3 +36,42 @@ Il s'agit du raccourci `CMD + /`
 ### Exercice 3
 /
 
+## Partie 3 - Délégation
+### Exercice 1
+L'intérêt d'utiliser une propriété statique, est que l'on a pas besoin de créer une instance de la classe pour accèder à la propriété.
+### Exercice 2
+```swift
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DocumentFile.documentList.count
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
+
+        var content = cell.defaultContentConfiguration()
+        content.text = DocumentFile.documentList[indexPath.row].title
+        content.secondaryText = String(DocumentFile.documentList[indexPath.row].size)
+        cell.contentConfiguration = content
+        
+        return cell
+    }
+```
+
+Si `dequeueReusableCell` est aussi important pour les performances de l'application, c'est parce qu'au lieu de créer chaque cellule et de les afficher de manière sélective, il ne créé qu'une poignée de cellules, suffisamment pour remplir l'écran et un peu plus. Au fur et à mesure du défilement, nous réutilisons les cellules en dehors de l'écran, ce qui permet d'économiser de la mémoire.
+### Exercice 3
+On va créer une extension de type Int64 car c'est le type du paramètre "fromByteCount" de la méthode string de la classe ByteCountFormatter.
+```swift
+extension Int64{
+    func formattedSize() -> String{
+        return ByteCountFormatter.string(fromByteCount: self, countStyle: ByteCountFormatter.CountStyle.decimal)
+    }
+}
+```
+```swift
+content.secondaryText = DocumentFile.documentList[indexPath.row].size.formattedSize()
+```
