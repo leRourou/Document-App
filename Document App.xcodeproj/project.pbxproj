@@ -13,6 +13,7 @@
 		05C1C02F2B56CFEF005118F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05C1C02D2B56CFEF005118F7 /* Main.storyboard */; };
 		05C1C0312B56CFF1005118F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05C1C0302B56CFF1005118F7 /* Assets.xcassets */; };
 		05C1C0342B56CFF1005118F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */; };
+		F5404DB62B57B930000257C3 /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		05C1C0302B56CFF1005118F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05C1C0332B56CFF1005118F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05C1C0352B56CFF1005118F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				05C1C0292B56CFEF005118F7 /* SceneDelegate.swift */,
 				05C1C02B2B56CFEF005118F7 /* ViewController.swift */,
 				05C1C02D2B56CFEF005118F7 /* Main.storyboard */,
+				F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */,
 				05C1C0302B56CFF1005118F7 /* Assets.xcassets */,
 				05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */,
 				05C1C0352B56CFF1005118F7 /* Info.plist */,
@@ -140,6 +143,7 @@
 			files = (
 				05C1C02C2B56CFEF005118F7 /* ViewController.swift in Sources */,
 				05C1C0282B56CFEF005118F7 /* AppDelegate.swift in Sources */,
+				F5404DB62B57B930000257C3 /* DocumentTableViewController.swift in Sources */,
 				05C1C02A2B56CFEF005118F7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
