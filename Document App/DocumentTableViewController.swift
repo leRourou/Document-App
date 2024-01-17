@@ -102,7 +102,19 @@ class DocumentTableViewController: UITableViewController {
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 1. Récuperer l'index de la ligne 
+        var index = self.tableView.indexPathForSelectedRow
+        // 2. Récuperer le document correspondant à l'index
+        if let index {
+            var doc = listFileInBundle()[index.row]
+            let destView = segue.destination as! DocumentViewController
+            destView.imageName = doc.imageName
+        }
+        // 3. Cibler l'instance de DocumentViewController via le segue.destination
+        // 4. Caster le segue.destination en DocumentViewController
+        // 5. Remplir la variable imageName de l'instance de DocumentViewController avec le nom de l'image du document
+    }
 
     /*
     // Override to support conditional editing of the table view.

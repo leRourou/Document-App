@@ -19,6 +19,7 @@
 		F5404DBE2B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DB92B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg */; };
 		F5404DBF2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DBA2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg */; };
 		F5404DC02B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F5404DBB2B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg */; };
+		F56C9E002B57DA1F001EA37A /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C9DFF2B57DA1F001EA37A /* DocumentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F5404DB92B57CA88000257C3 /* neom-wEgMlQ8DL6s-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "neom-wEgMlQ8DL6s-unsplash.jpg"; sourceTree = "<group>"; };
 		F5404DBA2B57CA88000257C3 /* shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "shelby-murphy-figueroa-MWnRzAoWqoo-unsplash.jpg"; sourceTree = "<group>"; };
 		F5404DBB2B57CA88000257C3 /* daniela-matthies-Xb4Y78131fA-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "daniela-matthies-Xb4Y78131fA-unsplash.jpg"; sourceTree = "<group>"; };
+		F56C9DFF2B57DA1F001EA37A /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				05C1C0292B56CFEF005118F7 /* SceneDelegate.swift */,
 				05C1C02B2B56CFEF005118F7 /* ViewController.swift */,
 				05C1C02D2B56CFEF005118F7 /* Main.storyboard */,
+				F56C9DFF2B57DA1F001EA37A /* DocumentViewController.swift */,
 				F5404DB52B57B930000257C3 /* DocumentTableViewController.swift */,
 				05C1C0302B56CFF1005118F7 /* Assets.xcassets */,
 				05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56C9E002B57DA1F001EA37A /* DocumentViewController.swift in Sources */,
 				05C1C02C2B56CFEF005118F7 /* ViewController.swift in Sources */,
 				05C1C0282B56CFEF005118F7 /* AppDelegate.swift in Sources */,
 				F5404DB62B57B930000257C3 /* DocumentTableViewController.swift in Sources */,
