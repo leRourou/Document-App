@@ -35,9 +35,6 @@ Il s'agit du raccourci `CMD + I`
 #### Et celui poru commenter la sélection
 Il s'agit du raccourci `CMD + /`
 
-### Exercice 3
-/
-
 
 ## Partie 3 - Délégation
 ### Exercice 1
@@ -85,7 +82,9 @@ content.secondaryText = DocumentFile.documentList[indexPath.row].size.formattedS
 
 ## Partie 4 - Navigation
 ### Exercice 1
-TODO!!!!!!
+En réalité, nous avons mis en place une structure de navigation qui permet aux utilisateurs de passer d'une vue à une autre de manière hiérarchique. Ainsi, le `NavigationController` facilite la gestion de la navigation entre les différentes parties de l'application, en créant une hiérarchie.
+
+Non, la `NavigationBar` et le `NavigationController` sont deux éléments distincts. Le `NavigationController` est responsable de la gestion de la navigation entre les vues, tandis que la `NavigationBar` est un composant visuel qui s'affiche en haut de chaque vue pour faciliter la navigation. Autrement dit, c'est le `NavigationController` qui utilise la `NavigationBar` pour afficher des informations de navigation.
 
 
 ## Partie 5 - Bundle
