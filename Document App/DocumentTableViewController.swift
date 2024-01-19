@@ -22,77 +22,75 @@ struct DocumentFile{
     var type: String
 }
 
-enum Sections: CaseIterable{
-    case Importés;
-    case Bundle;
-    
-    func getValue()->String {
-        switch self {
-        case .Importés: return "Importés"
-        case .Bundle: return "Bundle"
-        }
-    }
-}
-
-
 class DocumentTableViewController: UITableViewController {
     let quickLookController = QLPreviewController()
     let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.image])
     let fm = FileManager.default
-
     
-    func getAllSections() -> [String] {
-        return Sections.allCases.map({$0.getValue()})
-    }
-    
-    func listAllFiles() -> [[DocumentFile]] {
+    func getBundleFiles() -> [DocumentFile] {
+        var bundleFiles = [DocumentFile]()
         
-        let fm = FileManager.default // Initailisation de la gestion des fichiers
-        let path = Bundle.main.resourcePath! // Indication du chemin vers DocumentApp
-        let items = try! fm.contentsOfDirectory(atPath: path) // Récupération de toutes les images
+        let fm = FileManager.default
+        let path = Bundle.main.resourcePath!
+        let items = try! fm.contentsOfDirectory(atPath: path)
         
-       
-         var documentListBundle = [DocumentFile]()
-
-         // Parcourir les fichiers dans le répertoire des documents
-         if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-             let items = try! fm.contentsOfDirectory(atPath: documentsDirectory.path)
-             
-             for item in items {
-                 if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") {
-                     let currentUrl = documentsDirectory.appendingPathComponent(item)
-                     let resourcesValues = try! currentUrl.resourceValues(forKeys: [.contentTypeKey, .nameKey, .fileSizeKey])
-                     
-                     documentListBundle.append(DocumentFile(
-                         title: resourcesValues.name!,
-                         size: resourcesValues.fileSize ?? 0,
-                         imageName: item,
-                         url: currentUrl,
-                         type: resourcesValues.contentType!.description)
-                     )
-                 }
-             }
-         }
-        
-        var documentListImportes = [DocumentFile]()
-
-        for item in items { // Boucle sur chaque image
-            if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") { // On filtre les images
-                let currentUrl = URL(fileURLWithPath: path + "/" + item) // On récupére les propriétés de l'image
+        for item in items {
+            if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") {
+                let currentUrl = URL(fileURLWithPath: path + "/" + item)
                 let resourcesValues = try! currentUrl.resourceValues(forKeys: [.contentTypeKey, .nameKey, .fileSizeKey])
-                documentListImportes.append(DocumentFile(
+                
+                bundleFiles.append(DocumentFile(
                     title: resourcesValues.name!,
                     size: resourcesValues.fileSize ?? 0,
                     imageName: item,
                     url: currentUrl,
-                    type: resourcesValues.contentType!.description) // On crée un objet DocumentFile avec les données que nous avons
-                                          // récupéré
+                    type: resourcesValues.contentType!.description)
                 )
             }
         }
-        return [documentListBundle, documentListImportes]
+        
+        return bundleFiles
+    }
+
+
+    func getImportedFiles() -> [DocumentFile] {
+        var importedFiles = [DocumentFile]()
+        
+        let fm = FileManager.default
+        
+        if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let items = try! fm.contentsOfDirectory(atPath: documentsDirectory.path)
+            
+            for item in items {
+                if !item.hasSuffix("DS_Store") && item.hasSuffix(".jpg") {
+                    let currentUrl = documentsDirectory.appendingPathComponent(item)
+                    let resourcesValues = try! currentUrl.resourceValues(forKeys: [.contentTypeKey, .nameKey, .fileSizeKey])
+                    
+                    importedFiles.append(DocumentFile(
+                        title: resourcesValues.name!,
+                        size: resourcesValues.fileSize ?? 0,
+                        imageName: item,
+                        url: currentUrl,
+                        type: resourcesValues.contentType!.description)
+                    )
+                }
+            }
+        }
+        
+        return importedFiles
     }
     
+    func getAllFiles() -> [DocumentFile]{
+        var allFiles = [DocumentFile]()
+        for bunFile in getBundleFiles() {
+            allFiles.append(bunFile)
+        }
+        for impFile in getImportedFiles() {
+            allFiles.append(impFile)
+        }
+        return allFiles
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         quickLookController.dataSource = self;
@@ -105,35 +103,69 @@ class DocumentTableViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Sections.allCases.count
+        return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.listAllFiles()[section].count
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.getAllSections()[section]
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listAllFiles().count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
-        let document = listAllFiles()[0][indexPath.row]
-        cell.textLabel?.text = document.title
-        cell.detailTextLabel?.text = document.size.formattedSize()
+            switch section {
+            case 0:
+                return getBundleFiles().count
+            case 1:
+                return getImportedFiles().count
+            default:
+                return 0
+            }
+        }
 
-        return cell
-    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentCell", for: indexPath)
+
+            var document: DocumentFile
+
+            switch indexPath.section {
+            case 0:
+                document = getBundleFiles()[indexPath.row]
+            case 1:
+                document = getImportedFiles()[indexPath.row]
+            default:
+                fatalError("Invalid section")
+            }
+
+            cell.textLabel?.text = document.title;
+            cell.detailTextLabel?.text = document.size.formattedSize()
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+
+            return cell
+        }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+          let sectionName: String
+          switch section {
+              case 0:
+                  sectionName = NSLocalizedString("Bundles", comment: "Bundles")
+              case 1:
+                  sectionName = NSLocalizedString("Importations", comment: "Importations")
+              default:
+                  sectionName = ""
+          }
+          return sectionName
+      }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let previewController = QLPreviewController()
-                previewController.dataSource = self
-                previewController.currentPreviewItemIndex = indexPath.row
-                navigationController?.pushViewController(previewController, animated: true)
+        previewController.dataSource = self
+        
+        var fileIndex = indexPath.row
+        
+        switch indexPath.section {
+        case 1:
+            fileIndex += getBundleFiles().count
+        default:
+            break
+        }
+        
+        previewController.currentPreviewItemIndex = fileIndex
+        navigationController?.pushViewController(previewController, animated: true)
     }
     
     func instantiateQLPreviewController(withUrl url: URL, indexpath indexPath: IndexPath) {
@@ -144,11 +176,11 @@ class DocumentTableViewController: UITableViewController {
 
 extension DocumentTableViewController: QLPreviewControllerDataSource {
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return listAllFiles().count
+        return getAllFiles().count
     }
 
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let file = listAllFiles()[0][index]
+        let file = getAllFiles()[index]
         return file.url as QLPreviewItem
     }
 }

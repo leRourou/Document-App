@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		058E5E2A2B5A65FD0091D344 /* pexels-matthew-devries-3260753.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 058E5E292B5A65FD0091D344 /* pexels-matthew-devries-3260753.jpg */; };
 		05C1C0282B56CFEF005118F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C0272B56CFEF005118F7 /* AppDelegate.swift */; };
 		05C1C02A2B56CFEF005118F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C0292B56CFEF005118F7 /* SceneDelegate.swift */; };
 		05C1C02C2B56CFEF005118F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C1C02B2B56CFEF005118F7 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		058E5E292B5A65FD0091D344 /* pexels-matthew-devries-3260753.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "pexels-matthew-devries-3260753.jpg"; sourceTree = "<group>"; };
 		05C1C0242B56CFEF005118F7 /* Document App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Document App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C1C0272B56CFEF005118F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05C1C0292B56CFEF005118F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				05C1C0302B56CFF1005118F7 /* Assets.xcassets */,
 				05C1C0322B56CFF1005118F7 /* LaunchScreen.storyboard */,
 				05C1C0352B56CFF1005118F7 /* Info.plist */,
+				058E5E292B5A65FD0091D344 /* pexels-matthew-devries-3260753.jpg */,
 			);
 			path = "Document App";
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 				05C1C0342B56CFF1005118F7 /* LaunchScreen.storyboard in Resources */,
 				05C1C0312B56CFF1005118F7 /* Assets.xcassets in Resources */,
 				05C1C02F2B56CFEF005118F7 /* Main.storyboard in Resources */,
+				058E5E2A2B5A65FD0091D344 /* pexels-matthew-devries-3260753.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
