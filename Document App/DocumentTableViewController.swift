@@ -23,14 +23,18 @@ struct DocumentFile{
 }
 
 class DocumentTableViewController: UITableViewController {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let quickLookController = QLPreviewController()
     let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.image])
     let fm = FileManager.default
     
+    // MARK: Importation functionsÒ
+    
     func getBundleFiles() -> [DocumentFile] {
         var bundleFiles = [DocumentFile]()
         
-        let fm = FileManager.default
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         
@@ -55,9 +59,7 @@ class DocumentTableViewController: UITableViewController {
 
     func getImportedFiles() -> [DocumentFile] {
         var importedFiles = [DocumentFile]()
-        
-        let fm = FileManager.default
-        
+                
         if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let items = try! fm.contentsOfDirectory(atPath: documentsDirectory.path)
             
@@ -76,9 +78,10 @@ class DocumentTableViewController: UITableViewController {
                 }
             }
         }
-        
         return importedFiles
     }
+    
+    // Get all files from every source
     
     func getAllFiles() -> [DocumentFile]{
         var allFiles = [DocumentFile]()
@@ -101,6 +104,8 @@ class DocumentTableViewController: UITableViewController {
     @objc func importDoc() {
         present(documentPicker, animated: true, completion: nil)
     }
+    
+    // MARK: TableView logic
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -174,6 +179,8 @@ class DocumentTableViewController: UITableViewController {
     }
 }
 
+// MARK: Query Look
+
 extension DocumentTableViewController: QLPreviewControllerDataSource {
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return getAllFiles().count
@@ -184,6 +191,8 @@ extension DocumentTableViewController: QLPreviewControllerDataSource {
         return file.url as QLPreviewItem
     }
 }
+
+// MARK: Document Picker
 
 extension DocumentTableViewController: UIDocumentPickerDelegate {
     
