@@ -1,6 +1,8 @@
 # Answers
 > CHENU Adrien & ROUQUETTE Axel
-## Partie 1 - Environnement de développement
+
+## Partie 1 - Environnement de développement
+
 
 ### Exercice 1
 #### Les targets
@@ -33,12 +35,11 @@ Il s'agit du raccourci `CMD + I`
 #### Et celui poru commenter la sélection
 Il s'agit du raccourci `CMD + /`
 
-### Exercice 3
-/
 
 ## Partie 3 - Délégation
 ### Exercice 1
 L'intérêt d'utiliser une propriété statique, est que l'on a pas besoin de créer une instance de la classe pour accèder à la propriété.
+
 ### Exercice 2
 ```swift
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,9 +79,14 @@ On applique alors la modification dans la méthode `tableView`
 content.secondaryText = DocumentFile.documentList[indexPath.row].size.formattedSize()
 ```
 
+
 ## Partie 4 - Navigation
 ### Exercice 1
-TODO!!!!!!
+En réalité, nous avons mis en place une structure de navigation qui permet aux utilisateurs de passer d'une vue à une autre de manière hiérarchique. Ainsi, le `NavigationController` facilite la gestion de la navigation entre les différentes parties de l'application, en créant une hiérarchie.
+
+Non, la `NavigationBar` et le `NavigationController` sont deux éléments distincts. Le `NavigationController` est responsable de la gestion de la navigation entre les vues, tandis que la `NavigationBar` est un composant visuel qui s'affiche en haut de chaque vue pour faciliter la navigation. Autrement dit, c'est le `NavigationController` qui utilise la `NavigationBar` pour afficher des informations de navigation.
+
+
 ## Partie 5 - Bundle
 ### Exercice 1
 ```swift
@@ -116,3 +122,38 @@ TODO!!!!!!
         return documentListBundle
     }
 ```
+
+
+## Partie 6 - Créer l’écran de détail
+### Exercice 1
+Un `Segue` permet de définir une transition entre deux `ViewController`.
+
+### Exercice 2
+Une `constraint` est une distance permettant de définir le placement d'un élément de l'UI. Quand à l'`AutoLayout `, il permet de créer des contraintes qui définissent des relations entre deux vues; on précise à l'`AutoLayout` des informations pour qu'il puisse modifier la position et la taille de nos vues en fonction de la taille de l'écran: ces informations sont les contraintes.
+
+
+## Partie 9 - QLPreview
+### Exercice 1
+#### Questions
+Il serait pertinent d'utiliser un `disclosureIndicator` pour indiquer qu'une cellule est cliquable et qu'elle mènera à une autre vue de l'application. Cela offre une indication visuelle aux utilisateurs que la cellule est interactive. De plus, cela permet de suivre les conventions de conception d'Apple pour les applications iOS. Les utilisateurs d'iOS s'attendent à voir cette flèche pour indiquer la navigation ou l'accès à plus d'informations.
+
+## Partie 10 - Importation
+### Exercice 2
+#### Questions
+En Swift, `#selector` est utilisé pour créer des sélecteurs qui pointent vers des méthodes, principalement utilisés dans le contexte de l'interaction avec des contrôles d'interface utilisateur
+
+Dans notre appel, `.add` affiche le symbole "+" dans le bouton.
+
+XCode nous demande de mettre le mot clé `@objc` devant la fonction ciblée par le `#selector`. Cela est nécessaire pour le bon fonctionement entre Swift et Objective-C. Autrement dit, c'est pour pouvoir utiliser la méthode avec un sélecteur.
+
+Oui, il est possible d'ajouter plusieurs boutons à la barre de navigation en utilisant le tableau `rightBarButtonItems` ou `leftBarButtonItems` de la propriété `navigationItem`.
+Exemple de code:
+```swift
+let button1 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(button1Tapped))
+let button2 = UIBarButtonItem(title: "Autre", style: .plain, target: self, action: #selector(button2Tapped))
+
+// Ajouter les boutons à la barre de navigation
+navigationItem.rightBarButtonItems = [button1, button2]
+```
+
+La fonction `defer` sert à définir un bloc de code qui sera exécuté juste avant la sortie d'une portée courante (comme une fonction, une boucle, une condition, etc.). 
